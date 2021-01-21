@@ -9,4 +9,4 @@ gunicorn
 dj-static
 python-decouple
 whitenoise
-pwa
+django-pwa
