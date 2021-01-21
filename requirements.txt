@@ -1,8 +1,7 @@
 selenium
 Django==3.1.4
 django-with-asserts==0.0.1
-psycopg2==2.7.7
-request
+psycopg2
 requests
 urllib3
 dj-database-url
