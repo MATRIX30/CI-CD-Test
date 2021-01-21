@@ -2,9 +2,9 @@ selenium
 Django==3.1.4
 django-with-asserts==0.0.1
 psycopg2==2.7.7
-request==2018.11.20
-requests==2.20.1
-urllib3==1.24.1
+request
+requests
+urllib3
 dj-database-url
 gunicorn
 dj-static
