@@ -152,4 +152,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.1/howto/static-files/
+
+STATIC_URL = 'Diabetes_Surveillance_WebApp/static/'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# db_from_env= dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
+# Add these new lines
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'Diabetes_Surveillance_WebApp/static'),
+)
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
