@@ -13,8 +13,14 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 
+
+import dj_database_url
+from django.core.wsgi import get_wsgi_application
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = Path(__file__).resolve().parent.parent
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'Diabetes_Surveillance_WebApp/static/js', 'serviceworker.js')
 #PWA_SERVICE_WORKER_PATH = BASE_DIR / 'serviceworker.js'
 
@@ -58,19 +64,20 @@ SECRET_KEY = 'tb9574dz4tk*c^=14^^5-k(m3gi3w75)q%*ore5n0cfe34f!9&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','diabetes-survellance.herokuapp.com','0.0.0.0']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'Diabetes_Surveillance_WebApp.apps.DiabetesSurveillanceWebappConfig',
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles',    
     'pwa',
 ]
 
@@ -82,6 +89,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'Diabetes_Surveillance_Project.urls'
@@ -101,6 +109,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'Diabetes_Surveillance_Project.wsgi.application'
 
