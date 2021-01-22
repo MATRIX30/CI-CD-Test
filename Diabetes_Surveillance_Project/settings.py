@@ -123,6 +123,16 @@ WSGI_APPLICATION = 'Diabetes_Surveillance_Project.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+DATABASES = {
+    'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'GCE_ResultsDB',
+    'USER': 'postgres',
+    'PASSWORD': 'cyanide',
+    'HOST': '127.0.0.1',
+    'PORT': '',
+    }
+}
 
 
 # Password validation
