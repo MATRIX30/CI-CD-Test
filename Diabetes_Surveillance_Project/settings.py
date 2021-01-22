@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 
 
-import dj_database_url
+
 from django.core.wsgi import get_wsgi_application
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = Path(__file__).resolve().parent.parent
@@ -123,17 +123,29 @@ WSGI_APPLICATION = 'Diabetes_Surveillance_Project.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+# DATABASES = {
+#     'default': {
+#     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#     'NAME': 'GCE_ResultsDB',
+#     'USER': 'postgres',
+#     'PASSWORD': 'cyanide',
+#     'HOST': '127.0.0.1',
+#     'PORT': '',
+#     }
+# }
+
+# keep this
 DATABASES = {
     'default': {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'GCE_ResultsDB',
-    'USER': 'postgres',
-    'PASSWORD': 'cyanide',
-    'HOST': '127.0.0.1',
-    'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
+# add this
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
